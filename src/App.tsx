@@ -3,22 +3,23 @@ import IndexPage from "./pages/index-page";
 import SignInPage from "./pages/sign-in-page";
 import SignUpPage from "./pages/sign-up-page";
 import "./App.css";
+import Counter from "./pages/counter-page";
+
+/* 
+  Zustand: 전역 상태 관리를 도와주는 라이브러리
+  그럼 Context API와의 차이는?
+  사실 Context API는 전역 상태 관리를 위한 것이라기보다
+  Props Drilling을 막기 위한 하나의 수단 같은 거다.
+  <Context Provider />를 통해 Props Drilling 없이 한 번에 값을
+  전달할 수 있지만, 하위 상태 중 하나가 바뀔 경우, Context API의 값이 바뀌며
+  전체가 리렌더링 되는 치명적인 단점이 존재한다. 그래서 Context API는 보통
+  범용적인 전역 상태 관리보다는 국소적인 데이터 공유를 위해 더 자주 사용되곤한다.
+ */
 
 function AuthLayout() {
   return (
     <div>
       <header>Auth!</header>
-      {/*
-        (여기서)Outlet의 역할
-        Auth와 관련된 페이지들의 공용 레이아웃을 잡으려고 한다.
-        "Auth!"문구가 들어가있는 헤더는 항상 나오도록하고
-        헤더 밑에 페이지들을 보여주려고 한다.
-
-        그런 상황에서 다음과 같은 구조는 아래와 같은 의미를 가진다.
-        Route의 element prop으로 AuthLayout을 넣은 페이지들을 렌더링할 때,
-        header는 항상 보여주고 각 주소에 맞는 페이지들의 내용을 header 밑에
-        렌더링하여 보여주도록 해라.
-       */}
       <Outlet />
     </div>
   );
@@ -28,6 +29,7 @@ function App() {
   return (
     <Routes>
       <Route path="/" element={<IndexPage />} />
+      <Route path="/counter" element={<Counter />} />
       <Route element={<AuthLayout />}>
         <Route path="/sign-in" element={<SignInPage />} />
         <Route path="/sign-up" element={<SignUpPage />} />
