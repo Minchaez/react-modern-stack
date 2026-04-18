@@ -1,9 +1,8 @@
-import { Outlet, Route, Routes } from "react-router";
+import { Route, Routes } from "react-router";
 import IndexPage from "./pages/index-page";
-import SignInPage from "./pages/sign-in-page";
-import SignUpPage from "./pages/sign-up-page";
 import "./App.css";
-import Counter from "./pages/counter-page";
+import CounterPage from "./pages/counter-page";
+import TodoListPage from "./pages/todo-list-page";
 
 /* 
   Zustand: 전역 상태 관리를 도와주는 라이브러리
@@ -16,24 +15,12 @@ import Counter from "./pages/counter-page";
   범용적인 전역 상태 관리보다는 국소적인 데이터 공유를 위해 더 자주 사용되곤한다.
  */
 
-function AuthLayout() {
-  return (
-    <div>
-      <header>Auth!</header>
-      <Outlet />
-    </div>
-  );
-}
-
 function App() {
   return (
     <Routes>
       <Route path="/" element={<IndexPage />} />
-      <Route path="/counter" element={<Counter />} />
-      <Route element={<AuthLayout />}>
-        <Route path="/sign-in" element={<SignInPage />} />
-        <Route path="/sign-up" element={<SignUpPage />} />
-      </Route>
+      <Route path="/counter" element={<CounterPage />} />
+      <Route path="/todolist" element={<TodoListPage />} />
     </Routes>
   );
 }
