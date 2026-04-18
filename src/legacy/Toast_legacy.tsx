@@ -1,4 +1,4 @@
-import "./App.css";
+import "../App.css";
 import { Button } from "@/components/ui/button";
 import { toast, Toaster } from "sonner";
 function ShadcnPractice() {
